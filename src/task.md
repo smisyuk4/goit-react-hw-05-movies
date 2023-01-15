@@ -53,6 +53,9 @@ https://drive.google.com/file/d/1vR0hi3n1236Q5Bg4-se-8JVKD9UKSfId/view
 
 Маршрути У застосунку повинні бути такі маршрути. Якщо користувач зайшов за
 неіснуючим маршрутом, його необхідно перенаправляти на домашню сторінку.
+[docs](https://v5.reactrouter.com/web/example/basic)
+
+**npm install react-router-dom**
 
 **'/'** – компонент Home, домашня сторінка зі списком популярних кінофільмів.
 
@@ -88,3 +91,39 @@ async fetchFilms(valueObj) { const { option, nameFilm = '', lang =
     });
 
 } }
+
+## Іконки
+
+[docs](https://react-icons.github.io/react-icons/)
+
+**npm i react-icons**
+
+## Стилі
+
+[docs](https://emotion.sh/docs/install)
+
+**npm install --save @emotion/styled**
+
+# prop-types
+
+[docs](https://github.com/facebook/prop-types)
+
+**npm i prop-types**
+
+## Validation
+
+[docs](https://www.npmjs.com/package/yup#stringmatchesregex-regex-message-string--function-schema)
+
+**npm i yup**
+
+## form
+
+[docs](https://react-hook-form.com/)
+
+**npm install react-hook-form**
+
+## axios
+
+[docs](https://www.npmjs.com/package/axios)
+
+**npm i axios**
