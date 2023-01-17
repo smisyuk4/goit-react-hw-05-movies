@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { GoBack } from "components/GoBack";
 import { themoviedbApi } from 'themoviedbApi';
 import defImageFilm from "../../images/defImageFilm.jpg"
 import { FilmMainInfo, Poster, Desc, FilmTitle, DescItem, DescTitle } from "./MovieDetails.styled"
@@ -39,6 +40,7 @@ export const MovieDetails = ()=>{
     const {original_title, vote_average, overview} = film 
 
     return <div>
+            <GoBack />
             <FilmMainInfo>
               <Poster src={imageLink} alt={original_title} width="200" height="200"/> 
               <Desc>
