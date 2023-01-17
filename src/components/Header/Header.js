@@ -1,22 +1,24 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Container, HeaderStyled, NavList, NavLinkStyled } from './Header.styled';
+
+import { Outlet } from 'react-router-dom';
 
 export const Header = () => {
   return (
-    <div>
-      <header>
-        <ul>
+    <Container>
+      <HeaderStyled>
+        <NavList>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLinkStyled to="/">Home</NavLinkStyled>
           </li>
           <li>
-            <NavLink to="/movies">Movies</NavLink>
+            <NavLinkStyled to="/movies">Movies</NavLinkStyled>
           </li>
-        </ul>
-      </header>
+        </NavList>
+      </HeaderStyled>
 
       <main>
         <Outlet />
       </main>
-    </div>
+    </Container>
   );
 };
