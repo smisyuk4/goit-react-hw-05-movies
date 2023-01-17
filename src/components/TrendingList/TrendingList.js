@@ -1,15 +1,19 @@
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { SiCinema4D } from "react-icons/si";
+import { FilmList, Film, NavLinkStyled } from "./TrendingList.styled"
 
 export const TrendingList = ({ films }) => {
   return (
-    <ul>
+    <FilmList>
       {films.map(film => (
-        <li key={film.id}>
-          <NavLink to={`/movies/${film.id}`}>{film.title}</NavLink>
-        </li>
+        <Film key={film.id}>
+          <NavLinkStyled to={`/movies/${film.id}`}>
+            <SiCinema4D/>
+            {film.title}
+          </NavLinkStyled>
+        </Film>
       ))}
-    </ul>
+    </FilmList>
   );
 };
 

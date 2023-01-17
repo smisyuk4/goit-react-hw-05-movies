@@ -1,41 +1,57 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { themoviedbApi } from 'themoviedbApi';
+import defImageFilm from "../../images/defImageFilm.jpg"
+import { FilmMainInfo, Poster, Desc, FilmTitle, DescItem, DescTitle } from "./MovieDetails.styled"
 
 export const MovieDetails = ()=>{
     const {id} = useParams()
-    console.log(id);
     const [film, setFilm] = useState({});
+    const [imageLink, setImageLink] = useState(defImageFilm)
+    const [genres, setGenres] = useState([])
 
     useEffect(() => {
-      try {
-        const trandingFilms = themoviedbApi({ option: `/movie/${Number(id)}` });
-        trandingFilms.then( result => {
-            console.log(Number(id));
-            console.log(result);
-            setFilm(result)
-        });
-        
-      } catch (error) {
-        console.log(error);
+      if (id===''){
+        return
       }
+
+      async function fetchFilms(){
+        try {
+          const filmById = await themoviedbApi({ option: `/movie/${Number(id)}` });
+          const {poster_path, genres} = filmById
+
+          setFilm(filmById)
+
+          if(poster_path !==''){
+            setImageLink(prev => `https://image.tmdb.org/t/p/w500${poster_path}`) 
+          }
+            
+            setGenres(prev => genres.map(({name}) => name)) 
+        }catch (error) {
+          console.log(error);
+        }
+      }
+     
+      fetchFilms()
     }, [id]);
 
-    const {poster_path, original_title, vote_average, overview} = film //genres
-
-    const posterLink = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : null
-    // const genresString = genres ? genres.map((name) => name) : null
- 
+    const {original_title, vote_average, overview} = film 
 
     return <div>
-        <img style={{display: "block", maxWidth: '100%', height: 'auto'}} src={posterLink} alt={original_title} width="200" height="200"/> 
-        <h2>{original_title}</h2>
-        <p>Rating {vote_average} </p>
-        <p>Overview</p>
-        <p>{overview}</p>
-        <p>Genres</p>
-        {/* <p>{genresString}</p>  */}
-    </div>
+            <FilmMainInfo>
+              <Poster src={imageLink} alt={original_title} width="200" height="200"/> 
+              <Desc>
+                <FilmTitle>{original_title}</FilmTitle>
+                <DescItem><DescTitle>Rating: </DescTitle>{vote_average}</DescItem>
+                <DescItem><DescTitle>Overview: </DescTitle></DescItem>
+                <DescItem>{overview}</DescItem>
+                {genres.length > 0 &&  <DescItem><DescTitle>Genres: </DescTitle>{genres.join(', ')}</DescItem>}
+              </Desc>
+            </FilmMainInfo>
+          </div>
 }
 
-// .join(', ')
+MovieDetails.propTypes = {
+  id: PropTypes.string,
+}

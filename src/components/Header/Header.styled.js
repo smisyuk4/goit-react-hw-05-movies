@@ -8,20 +8,16 @@ export const Container = styled.div`
 `
 
 export const HeaderStyled = styled.header`
-    padding: 10px 0;
+    padding: 10px;
+    margin-bottom: 10px;
     background-color: pink;
 `
 
 export const NavList = styled.ul`
-    list-style: none;
     display: flex;
     gap: 20px;
+
 `
-
-// export const NavItem = styled.li`
-
-// `
-
 export const NavLinkStyled = styled(NavLink)`
     display: block;
     padding: 5px;
