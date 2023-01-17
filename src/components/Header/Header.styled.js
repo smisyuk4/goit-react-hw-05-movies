@@ -21,6 +21,7 @@ export const NavList = styled.ul`
 export const NavLinkStyled = styled(NavLink)`
     display: block;
     padding: 5px;
+    color: currentColor;
     text-decoration: none;  
 
     &:hover, &:focus {

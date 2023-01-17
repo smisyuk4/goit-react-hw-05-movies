@@ -4,7 +4,7 @@ import { LinkStyled } from "./GoBack.styled"
 
 export const GoBack = ()=>{
     const location = useLocation();
-    const backLinkRef = location.state?.from ?? '/movies'
+    const backLinkRef = location.state?.from ?? '/'
 
     return <LinkStyled to={backLinkRef}>
                 <BiArrowBack/>

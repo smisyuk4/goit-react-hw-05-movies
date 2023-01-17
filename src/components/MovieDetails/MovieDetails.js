@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { GoBack } from "components/GoBack";
 import { themoviedbApi } from 'themoviedbApi';
 import defImageFilm from "../../images/defImageFilm.jpg"
-import { FilmMainInfo, Poster, Desc, FilmTitle, DescItem, DescTitle } from "./MovieDetails.styled"
+import { FilmMainInfo, Poster, Desc, FilmTitle, DescItem, DescTitle, FilmSecondInfo, NavLinkStyled } from "./MovieDetails.styled"
+
+
 
 export const MovieDetails = ()=>{
     const {id} = useParams()
@@ -41,6 +43,7 @@ export const MovieDetails = ()=>{
 
     return <div>
             <GoBack />
+
             <FilmMainInfo>
               <Poster src={imageLink} alt={original_title} width="200" height="200"/> 
               <Desc>
@@ -51,6 +54,13 @@ export const MovieDetails = ()=>{
                 {genres.length > 0 &&  <DescItem><DescTitle>Genres: </DescTitle>{genres.join(', ')}</DescItem>}
               </Desc>
             </FilmMainInfo>
+
+            <FilmSecondInfo>
+              <li><NavLinkStyled to="cast">Cast</NavLinkStyled></li>
+              <li><NavLinkStyled to="reviews">Reviews</NavLinkStyled></li>
+            </FilmSecondInfo>
+
+            <div><Outlet/></div>
           </div>
 }
 
