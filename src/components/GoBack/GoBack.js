@@ -6,7 +6,7 @@ export const GoBack = ()=>{
     const location = useLocation();
     const backLinkRef = location.state?.from ?? '/'
 
-    return <LinkStyled to={backLinkRef}>
+    return <LinkStyled to={backLinkRef} aria-label="go back">
                 <BiArrowBack/>
                 Go back
             </LinkStyled>

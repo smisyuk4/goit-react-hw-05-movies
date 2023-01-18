@@ -8,10 +8,10 @@ export const Header = () => {
       <HeaderStyled>
         <NavList>
           <li>
-            <NavLinkStyled to="/">Home</NavLinkStyled>
+            <NavLinkStyled to="/" aria-label="home">Home</NavLinkStyled>
           </li>
           <li>
-            <NavLinkStyled to="/movies">Movies</NavLinkStyled>
+            <NavLinkStyled to="/movies" aria-label="movies">Movies</NavLinkStyled>
           </li>
         </NavList>
       </HeaderStyled>

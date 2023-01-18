@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { themoviedbApi } from 'themoviedbApi';
-import { WrpReview, TitleAuthor, ContentStyle } from "./Reviews.styled"
+import { WrpReview, TitleAuthor, ContentStyle, Error } from "./Reviews.styled"
 
 export const Reviews = () => {
     const {id} = useParams()
@@ -27,11 +27,11 @@ export const Reviews = () => {
       }, [id]);
 
     if (reviews.length === 0){
-    return
+      return <Error>no reviews</Error>
     }
 
     if (reviews.length > 0){
-    return reviews.map(({author, content}, idx) => <OneReview key={idx} num={idx} author={author} content={content}/>)
+      return reviews.map(({author, content}, idx) => <OneReview key={idx} num={idx} author={author} content={content}/>)
     }    
 }
 

@@ -45,7 +45,7 @@ export const MovieDetails = ()=>{
             <GoBack />
 
             <FilmMainInfo>
-              <Poster src={imageLink} alt={original_title} width="200" height="200"/> 
+              <Poster src={imageLink} alt={original_title} width="200" height="400" loading="lazy"/> 
               <Desc>
                 <FilmTitle>{original_title}</FilmTitle>
                 <DescItem><DescTitle>Rating: </DescTitle>{vote_average}</DescItem>
@@ -56,8 +56,8 @@ export const MovieDetails = ()=>{
             </FilmMainInfo>
 
             <FilmSecondInfo>
-              <li><NavLinkStyled to="cast">Cast</NavLinkStyled></li>
-              <li><NavLinkStyled to="reviews">Reviews</NavLinkStyled></li>
+              <li><NavLinkStyled to="cast" aria-label="cast">Cast</NavLinkStyled></li>
+              <li><NavLinkStyled to="reviews" aria-label="reviews">Reviews</NavLinkStyled></li>
             </FilmSecondInfo>
 
             <SecondInfoWrap>

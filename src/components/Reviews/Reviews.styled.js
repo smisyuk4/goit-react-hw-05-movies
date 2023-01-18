@@ -10,3 +10,8 @@ export const TitleAuthor = styled.h3`
 export const ContentStyle = styled.p`
     font-style: italic;
 `
+
+export const Error = styled.p`
+    font-weight: 500;
+    color: red;
+`

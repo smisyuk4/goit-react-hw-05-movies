@@ -23,3 +23,9 @@ h1, h2, h3, h4, p, span, img, ul, li, button {
 ul {
   list-style: none;
 }
+
+img {
+  display: block; 
+  max-width: 100%; 
+  height: auto; 
+}
