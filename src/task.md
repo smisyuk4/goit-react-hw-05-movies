@@ -127,3 +127,9 @@ async fetchFilms(valueObj) { const { option, nameFilm = '', lang =
 [docs](https://www.npmjs.com/package/axios)
 
 **npm i axios**
+
+
+## loader
+[Docs](https://mhnpd.github.io/react-loader-spinner/docs/intro)
+
+**npm install react-loader-spinner --save**

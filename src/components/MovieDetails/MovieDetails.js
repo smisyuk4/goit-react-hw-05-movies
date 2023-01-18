@@ -1,6 +1,7 @@
 import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { TailSpin } from  'react-loader-spinner'
 import { GoBack } from "components/GoBack";
 import { themoviedbApi } from 'themoviedbApi';
 import defImageFilm from "../../images/defImageFilm.jpg"
@@ -13,6 +14,7 @@ export const MovieDetails = ()=>{
     const [film, setFilm] = useState({});
     const [imageLink, setImageLink] = useState(defImageFilm)
     const [genres, setGenres] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
       if (id===''){
@@ -20,6 +22,7 @@ export const MovieDetails = ()=>{
       }
 
       async function fetchFilms(){
+        setIsLoading(true)
         try {
           const filmById = await themoviedbApi({ option: `/movie/${Number(id)}` });
           const {poster_path, genres} = filmById
@@ -31,8 +34,10 @@ export const MovieDetails = ()=>{
           }
             
             setGenres(prev => genres.map(({name}) => name)) 
-        }catch (error) {
+        } catch (error) {
           console.log(error);
+        } finally {
+          setIsLoading(false)
         }
       }
      
@@ -42,6 +47,16 @@ export const MovieDetails = ()=>{
     const {original_title, vote_average, overview} = film 
 
     return <div>
+            {isLoading && <TailSpin
+              height="80"
+              width="80"
+              color="red"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperClass="loader"
+              visible={true}
+            />}
+
             <GoBack />
 
             <FilmMainInfo>

@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { TailSpin } from  'react-loader-spinner'
 import { themoviedbApi } from 'themoviedbApi';
 import { WrpReview, TitleAuthor, ContentStyle, Error } from "./Reviews.styled"
 
 export const Reviews = () => {
     const {id} = useParams()
     const [reviews, setReviews] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         if (id===''){
@@ -13,13 +15,16 @@ export const Reviews = () => {
         }
   
         async function fetchFilms(){
+          setIsLoading(true)
           try {
             const reviewsFilm = await themoviedbApi({ option: `/movie/${Number(id)}/reviews` });
             console.log(reviewsFilm.results)
   
             setReviews(prev => reviewsFilm.results)                
-          }catch (error) {
+          } catch (error) {
             console.log(error);
+          } finally {
+            setIsLoading(false)
           }
         }
        
@@ -31,7 +36,21 @@ export const Reviews = () => {
     }
 
     if (reviews.length > 0){
-      return reviews.map(({author, content}, idx) => <OneReview key={idx} num={idx} author={author} content={content}/>)
+      return (
+        <>
+          {isLoading && <TailSpin
+            height="80"
+            width="80"
+            color="red"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperClass="loader"
+            visible={true}
+          />}
+    
+          {reviews.map(({author, content}, idx) => <OneReview key={idx} num={idx} author={author} content={content}/>)}
+        </>
+      );       
     }    
 }
 
