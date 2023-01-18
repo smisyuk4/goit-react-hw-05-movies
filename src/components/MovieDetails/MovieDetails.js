@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { GoBack } from "components/GoBack";
 import { themoviedbApi } from 'themoviedbApi';
 import defImageFilm from "../../images/defImageFilm.jpg"
-import { FilmMainInfo, Poster, Desc, FilmTitle, DescItem, DescTitle, FilmSecondInfo, NavLinkStyled } from "./MovieDetails.styled"
+import { FilmMainInfo, Poster, Desc, FilmTitle, DescItem, DescTitle, FilmSecondInfo, NavLinkStyled, SecondInfoWrap } from "./MovieDetails.styled"
 
 
 
@@ -60,7 +60,9 @@ export const MovieDetails = ()=>{
               <li><NavLinkStyled to="reviews">Reviews</NavLinkStyled></li>
             </FilmSecondInfo>
 
-            <div><Outlet/></div>
+            <SecondInfoWrap>
+              <Outlet/>
+            </SecondInfoWrap>
           </div>
 }
 

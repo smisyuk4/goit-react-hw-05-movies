@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 export const FilmMainInfo = styled.div`
     display: flex;
     gap: 10px;
-    border: 2px solid;
     margin-bottom: 15px;
 `
 export const Poster = styled.img`
@@ -55,4 +54,10 @@ export const NavLinkStyled = styled(NavLink)`
         font-weight: 500;
         border-radius: 10px;
     }
+`
+
+// ******************
+
+export const SecondInfoWrap = styled.div`
+    padding: 10px;
 `
