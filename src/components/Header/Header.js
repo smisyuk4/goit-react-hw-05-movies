@@ -1,6 +1,6 @@
-import { Container, HeaderStyled, NavList, NavLinkStyled } from './Header.styled';
-
 import { Outlet } from 'react-router-dom';
+import { Suspense } from "react";
+import { Container, HeaderStyled, NavList, NavLinkStyled } from './Header.styled';
 
 export const Header = () => {
   return (
@@ -16,9 +16,12 @@ export const Header = () => {
         </NavList>
       </HeaderStyled>
 
-      <main>
-        <Outlet />
-      </main>
+      <Suspense fallback={<div>Loading page...</div>}>
+        <main>
+          <Outlet />
+        </main>
+      </Suspense>
+      
     </Container>
   );
 };

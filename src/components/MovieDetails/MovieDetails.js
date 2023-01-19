@@ -1,5 +1,5 @@
 import { Outlet, useParams } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { TailSpin } from  'react-loader-spinner'
 import { GoBack } from "components/GoBack";
@@ -75,9 +75,12 @@ export const MovieDetails = ()=>{
               <li><NavLinkStyled to="reviews" aria-label="reviews">Reviews</NavLinkStyled></li>
             </FilmSecondInfo>
 
-            <SecondInfoWrap>
-              <Outlet/>
-            </SecondInfoWrap>
+            <Suspense fallback={<div>Loading...</div>}>
+              <SecondInfoWrap>
+                <Outlet/>
+              </SecondInfoWrap>
+            </Suspense>
+            
           </div>
 }
 
