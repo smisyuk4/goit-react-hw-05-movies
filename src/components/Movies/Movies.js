@@ -4,6 +4,7 @@ import { TailSpin } from  'react-loader-spinner'
 import { themoviedbApi } from 'themoviedbApi';
 import { SearchBox } from 'components/SearchBox';
 import { FilmList } from "components/FilmList";
+// import { GoBack } from "components/GoBack"; // повертає на сторінку Номе, а хотів щоб з списку фільмів повертала на форму в цій же сторінці
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -46,6 +47,8 @@ export const Movies = () => {
 
   return (
     <>
+       {/* <GoBack />  */}
+
       {isLoading && <TailSpin
           height="80"
           width="80"
@@ -57,6 +60,7 @@ export const Movies = () => {
         />}
 
       {films.length === 0 ? <SearchBox checkParams={checkParams}/> : <FilmList films={films}/>}      
+
       <ToastContainer autoClose={2000}/>
     </>
   );
