@@ -5,6 +5,9 @@ import { themoviedbApi } from 'themoviedbApi';
 import { SearchBox } from 'components/SearchBox';
 import { FilmList } from "components/FilmList";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filmName = searchParams.get("film") ?? "";
@@ -19,8 +22,11 @@ export const Movies = () => {
     async function fetchFilms(){
       setIsLoading(true)
       try {
-        const filmsByName = await themoviedbApi({ option: '/search/movie', nameFilm: `&query=${filmName}` });
-        console.log(filmsByName.results)
+        const filmsByName = await themoviedbApi({ option: '/search/movie', nameFilm: `&query=${filmName}` });  
+
+        if (filmsByName.results.length === 0){         
+          toast('Sorry film not found')
+        }
 
         setFilms(prev => filmsByName.results)                
       } catch (error) {
@@ -34,7 +40,6 @@ export const Movies = () => {
   }, [filmName]);
 
   const checkParams = (film) => {
-    console.log(film)
     const nextParams = film !== "" ? { film } : {};
       setSearchParams(nextParams);
   };
@@ -52,8 +57,7 @@ export const Movies = () => {
         />}
 
       {films.length === 0 ? <SearchBox checkParams={checkParams}/> : <FilmList films={films}/>}      
+      <ToastContainer autoClose={2000}/>
     </>
   );
 };
-
-// export default Movies

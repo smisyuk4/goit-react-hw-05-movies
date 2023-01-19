@@ -18,8 +18,6 @@ export const Reviews = () => {
           setIsLoading(true)
           try {
             const reviewsFilm = await themoviedbApi({ option: `/movie/${Number(id)}/reviews` });
-            console.log(reviewsFilm.results)
-  
             setReviews(prev => reviewsFilm.results)                
           } catch (error) {
             console.log(error);

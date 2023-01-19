@@ -117,3 +117,9 @@ https://drive.google.com/file/d/1vR0hi3n1236Q5Bg4-se-8JVKD9UKSfId/view
 [Docs](https://mhnpd.github.io/react-loader-spinner/docs/intro)
 
 **npm install react-loader-spinner --save**
+
+## Notifications
+
+[Docs](https://github.com/fkhadra/react-toastify)
+
+**npm install --save react-toastify**
