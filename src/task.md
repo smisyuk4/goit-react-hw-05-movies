@@ -76,22 +76,6 @@ https://drive.google.com/file/d/1vR0hi3n1236Q5Bg4-se-8JVKD9UKSfId/view
 Додай асинхронне завантаження JS-коду для маршрутів застосунку, використовуючи
 `React.lazy()` і `Suspense`.
 
-## Filmoteka
-
-export class Filmoteka { BASE_URL = 'https://api.themoviedb.org/3'; API_KEY =
-'2e329d861e790504d655e6d7175d4c52';
-
-async fetchFilms(valueObj) { const { option, nameFilm = '', lang =
-'&language=en', imageLang = '&include_image_language=en', region =
-'&region=en-US', page = 1, } = valueObj;
-
-    const url = `${this.BASE_URL}${option}?api_key=${this.API_KEY}${nameFilm}${lang}${imageLang}${region}&page=${page}&include_adult=false`+ this.addFilterQuery() + this.addDateQuery()+this.addGenreQuery();
-    return await axios.get(url).then(response => {
-      return response.data;
-    });
-
-} }
-
 ## Іконки
 
 [docs](https://react-icons.github.io/react-icons/)
@@ -112,9 +96,9 @@ async fetchFilms(valueObj) { const { option, nameFilm = '', lang =
 
 ## Validation
 
-[docs](https://www.npmjs.com/package/yup#stringmatchesregex-regex-message-string--function-schema)
+[docs](https://react-hook-form.com/get-started#Applyvalidation)
 
-**npm i yup**
+**npm install @hookform/resolvers yup**
 
 ## form
 

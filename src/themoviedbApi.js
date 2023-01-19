@@ -14,6 +14,7 @@ export const themoviedbApi = async valueObj => {
   } = valueObj;
 
   const url = `${BASE_URL}${option}?api_key=${API_KEY}${nameFilm}${lang}${imageLang}${region}&page=${page}&include_adult=false`;
+  console.log(url)
   return await axios.get(url).then(response => {
     return response.data;
   });
