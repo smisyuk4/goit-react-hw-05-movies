@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TailSpin } from  'react-loader-spinner'
 import { themoviedbApi } from 'themoviedbApi';
-import { TrendingList } from 'components/TrendingList';
+import { FilmList } from 'components/FilmList';
 
 export const Home = () => {
   const [films, setFilms] = useState([]);
@@ -30,7 +30,7 @@ export const Home = () => {
         visible={true}
       />}
 
-      <TrendingList films={films} />
+      <FilmList films={films} />
     </>
   );
 };

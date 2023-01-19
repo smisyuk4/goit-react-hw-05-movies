@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { TailSpin } from  'react-loader-spinner'
 import { themoviedbApi } from 'themoviedbApi';
 import { SearchBox } from 'components/SearchBox';
-import { TrendingList } from "components/TrendingList";
+import { FilmList } from "components/FilmList";
 
 export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -51,7 +51,7 @@ export const Movies = () => {
           visible={true}
         />}
 
-      {films.length === 0 ? <SearchBox checkParams={checkParams}/> : <TrendingList films={films}/>}      
+      {films.length === 0 ? <SearchBox checkParams={checkParams}/> : <FilmList films={films}/>}      
     </>
   );
 };

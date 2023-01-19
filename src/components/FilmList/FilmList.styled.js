@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
-export const FilmList = styled.ul`    
+export const FilmListStyled = styled.ul`  
+    display: inline-block;  
     margin-left: 25px;
 `
 
